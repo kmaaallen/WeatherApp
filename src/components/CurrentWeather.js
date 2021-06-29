@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
+import React from 'react';
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -8,6 +8,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
+    card: {
+        padding: '100px',
+        backgroundColor: 'transparent',
+        height: '100vh'
+    },
     paddingTop30: {
         paddingTop: '30px',
     },
@@ -25,39 +30,13 @@ const useStyles = makeStyles({
     },
 });
 
-function CurrentWeather() {
+function CurrentWeather(props) {
     const classes = useStyles();
-    const [latitude, setLatitude] = useState('');
-    const [longitude, setLongitude] = useState('');
-    const [data, setData] = useState([]);
-
-    const firstCall = useRef(true);
-
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition(function (pos) {
-            setLatitude(pos.coords.latitude);
-            setLongitude(pos.coords.longitude);
-        });
-    }, []);
-
-    useLayoutEffect(() => {
-        if (firstCall.current) {
-            firstCall.current = false;
-            return;
-        } else if (latitude !== '' && longitude !== '') {
-            fetch(`/api/weather/${latitude}/${longitude}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    setData(data.data);
-                    console.log(data);
-                });
-        }
-    }, [latitude, longitude]);
 
     function getTime(timestamp) {
         var date = new Date(timestamp * 1000);
         var timestr = date.toLocaleTimeString([], { hour12: true, hour: '2-digit', minute: '2-digit' });
-        if (timestr[0] == '0') {
+        if (timestr[0] === '0') {
             timestr = timestr.slice(1);
         }
         return timestr;
@@ -65,46 +44,46 @@ function CurrentWeather() {
 
     return (
         <div>
-            {(typeof data.main != 'undefined') ? (
-                <Card >
+            {(typeof props.data.main != 'undefined') ? (
+                <Card className={classes.card}>
                     <CardContent>
                         <Typography variant="h2">
-                            {data.name || 'Loading local weather...'}
+                            {props.data.name || 'Loading local weather...'}
                         </Typography>
                         <Grid container>
                             <Grid item xs>
                                 <CardMedia
                                     className={classes.media + ' ' + classes.floatRight}
-                                    image={`${process.env.REACT_APP_API_LOGO}/${data.weather[0].icon}@2x.png`}
-                                    title={`${data.weather[0].description} icon`} />
+                                    image={`${process.env.REACT_APP_API_LOGO}/${props.data.weather[0].icon}@2x.png`}
+                                    title={`${props.data.weather[0].description} icon`} />
                             </Grid>
                             <Grid item xs>
                                 <Typography variant="h5" className={classes.paddingTop30 + ' ' + classes.floatLeft}>
-                                    {Math.round(data.main.temp)}°C
+                                    {Math.round(props.data.main.temp)}°C
                                 </Typography>
                             </Grid>
                         </Grid>
                         <Grid container>
                             <Grid item xs>
                                 <Typography variant="h5" className={classes.floatRight}>
-                                    Max: {Math.round(data.main.temp_max)}°C
+                                    Max: {Math.round(props.data.main.temp_max)}°C
                                 </Typography>
                             </Grid>
                             <Grid item xs>
                                 <Typography variant="h5" className={classes.floatLeft}>
-                                    Min: {Math.round(data.main.temp_min)}°C
+                                    Min: {Math.round(props.data.main.temp_min)}°C
                                 </Typography>
                             </Grid>
                         </Grid>
                         <Grid container>
                             <Grid item xs>
                                 <Typography variant="h5" className={classes.floatRight}>
-                                    Sunrise: {getTime(data.sys.sunrise)}
+                                    Sunrise: {getTime(props.data.sys.sunrise)}
                                 </Typography>
                             </Grid>
                             <Grid item xs>
                                 <Typography variant="h5" className={classes.floatLeft}>
-                                    Sunset: {getTime(data.sys.sunset)}
+                                    Sunset: {getTime(props.data.sys.sunset)}
                                 </Typography>
                             </Grid>
                         </Grid>
