@@ -56,7 +56,10 @@ function CurrentWeather() {
 
     function getTime(timestamp) {
         var date = new Date(timestamp * 1000);
-        var timestr = date.toLocaleTimeString();
+        var timestr = date.toLocaleTimeString([], { hour12: true, hour: '2-digit', minute: '2-digit' });
+        if (timestr[0] == '0') {
+            timestr = timestr.slice(1);
+        }
         return timestr;
     }
 
@@ -72,24 +75,24 @@ function CurrentWeather() {
                             <Grid item xs>
                                 <CardMedia
                                     className={classes.media + ' ' + classes.floatRight}
-                                    image={`${process.env.REACT_APP_API_LOGO}/${data.weather[0].icon}.png`}
+                                    image={`${process.env.REACT_APP_API_LOGO}/${data.weather[0].icon}@2x.png`}
                                     title={`${data.weather[0].description} icon`} />
                             </Grid>
                             <Grid item xs>
-                                <Typography variant="h5" textAlign="center" className={classes.paddingTop30 + ' ' + classes.floatLeft}>
-                                    {data.main.temp}°C
+                                <Typography variant="h5" className={classes.paddingTop30 + ' ' + classes.floatLeft}>
+                                    {Math.round(data.main.temp)}°C
                                 </Typography>
                             </Grid>
                         </Grid>
                         <Grid container>
                             <Grid item xs>
                                 <Typography variant="h5" className={classes.floatRight}>
-                                    Max: {data.main.temp_max}°C
+                                    Max: {Math.round(data.main.temp_max)}°C
                                 </Typography>
                             </Grid>
                             <Grid item xs>
                                 <Typography variant="h5" className={classes.floatLeft}>
-                                    Min: {data.main.temp_min}°C
+                                    Min: {Math.round(data.main.temp_min)}°C
                                 </Typography>
                             </Grid>
                         </Grid>
