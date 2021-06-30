@@ -1,5 +1,7 @@
 import './App.css';
 import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
+//Components
+import SearchWeather from './components/SearchWeather';
 import CurrentWeather from './components/CurrentWeather';
 //Backgrounds
 import Atmosphere from './images/Atmosphere.jpg';
@@ -18,6 +20,10 @@ function App() {
   const [background, setBackground] = useState([]);
 
   const firstCall = useRef(true);
+
+  function myCallBack(cityData) {
+    setData(cityData)
+  };
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (pos) {
@@ -53,6 +59,7 @@ function App() {
 
   return (
     <div className="App" style={{ backgroundImage: `url(${background})` }}>
+      <SearchWeather callBackFromParent={myCallBack} />
       <CurrentWeather data={data} />
     </div>
   );
