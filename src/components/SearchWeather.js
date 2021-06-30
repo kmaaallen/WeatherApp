@@ -20,12 +20,15 @@ const useStyles = makeStyles({
     }
 })
 
+//TODO - PREVENT RELOAD ON ENTER
+
 function Search(props) {
     const classes = useStyles();
     const [city, setCity] = useState('');
     const [cityData, setCityData] = useState([]);
 
-    function handleSubmit() {
+    function handleSubmit(e) {
+        e.preventDefault();
         fetch(`/api/weather/${city}`)
             .then((res) => res.json())
             .then((cityData) => {
@@ -49,18 +52,18 @@ function Search(props) {
     }, [props, cityData, prevCity])
 
     return (
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={handleSubmit}>
             <TextField
                 id="city-text"
-                //onChange={handleChange}
                 onChange={(event) => { setCity(event.target.value) }}
                 label="City"
                 variant="filled"
                 className={classes.search} />
             <Button
+                type="submit"
                 variant="contained"
                 className={classes.button}
-                onClick={handleSubmit}>Search</Button>
+            >Search</Button>
         </form>
     )
 }
