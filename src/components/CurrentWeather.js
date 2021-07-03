@@ -29,16 +29,29 @@ const useStyles = makeStyles({
     },
 });
 
+// TODO: City not found message
+// TODO: Night background
+// TODO: clear city on refresh
+
 function CurrentWeather(props) {
     const classes = useStyles();
 
-    function getTime(timestamp) {
-        var date = new Date(timestamp * 1000);
-        var timestr = date.toLocaleTimeString([], { hour12: true, hour: '2-digit', minute: '2-digit' });
-        if (timestr[0] === '0') {
-            timestr = timestr.slice(1);
+    function getTime(timestamp, timezone) {
+        var localDate = new Date();
+        var localOffset = (localDate.getTimezoneOffset()) * 60000;
+
+        var timeDate = new Date(timestamp * 1000);
+        var time = timeDate.getTime();
+
+        var utc = time + localOffset;
+        var cityUtc = utc + (timezone * 1000);
+
+        var nd = new Date(cityUtc);
+        var riseSet = nd.toLocaleTimeString([], { hour12: true, hour: '2-digit', minute: '2-digit' });
+        if (riseSet[0] === '0') {
+            riseSet = riseSet.slice(1);
         }
-        return timestr;
+        return riseSet;
     }
 
     return (
@@ -47,7 +60,7 @@ function CurrentWeather(props) {
                 <Card className={classes.card}>
                     <CardContent>
                         <Typography variant="h2">
-                            {props.data.name || 'Loading local weather...'}
+                            {`${props.data.name}, ${props.data.sys.country}` || 'Loading local weather...'}
                         </Typography>
                         <Grid container>
                             <Grid item xs>
@@ -77,12 +90,12 @@ function CurrentWeather(props) {
                         <Grid container>
                             <Grid item xs>
                                 <Typography variant="h5" className={classes.floatRight}>
-                                    Sunrise: {getTime(props.data.sys.sunrise)}
+                                    Sunrise: {getTime(props.data.sys.sunrise, props.data.timezone)}
                                 </Typography>
                             </Grid>
                             <Grid item xs>
                                 <Typography variant="h5" className={classes.floatLeft}>
-                                    Sunset: {getTime(props.data.sys.sunset)}
+                                    Sunset: {getTime(props.data.sys.sunset, props.data.timezone)}
                                 </Typography>
                             </Grid>
                         </Grid>
