@@ -37,6 +37,7 @@ function Search(props) {
                     setSearchError(capitalised);
                 } else {
                     setCityData(cityData.data);
+                    setCity('');
                 }
             })
             .catch(error => {
@@ -65,6 +66,7 @@ function Search(props) {
                 id="city-text"
                 onChange={(event) => { setCity(event.target.value) }}
                 label="City"
+                value={city}
                 error={searchError}
                 helperText={searchError}
                 variant="filled"
