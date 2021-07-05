@@ -20,20 +20,28 @@ const useStyles = makeStyles({
     }
 })
 
-//TODO - PREVENT RELOAD ON ENTER
-
 function Search(props) {
     const classes = useStyles();
     const [city, setCity] = useState('');
     const [cityData, setCityData] = useState([]);
+    const [searchError, setSearchError] = useState('');
 
     function handleSubmit(e) {
+        setSearchError('');
         e.preventDefault();
         fetch(`/api/weather/${city}`)
             .then((res) => res.json())
             .then((cityData) => {
-                setCityData(cityData.data);
-            });
+                if (cityData.data.cod === "404") {
+                    var capitalised = cityData.data.message.charAt(0).toUpperCase() + cityData.data.message.slice(1);
+                    setSearchError(capitalised);
+                } else {
+                    setCityData(cityData.data);
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     const prevCityData = useRef();
@@ -45,7 +53,7 @@ function Search(props) {
 
     useLayoutEffect(() => {
         if (cityData === prevCity) {
-            return
+            return;
         } else {
             props.callBackFromParent(cityData);
         }
@@ -57,6 +65,8 @@ function Search(props) {
                 id="city-text"
                 onChange={(event) => { setCity(event.target.value) }}
                 label="City"
+                error={searchError}
+                helperText={searchError}
                 variant="filled"
                 className={classes.search} />
             <Button
