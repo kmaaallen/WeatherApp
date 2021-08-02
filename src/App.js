@@ -3,6 +3,7 @@ import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 //Components
 import SearchWeather from './components/SearchWeather';
 import CurrentWeather from './components/CurrentWeather';
+import Background from './components/Background';
 //Backgrounds
 import Atmosphere from './images/Atmosphere.jpg';
 import Clouds from './images/Clouds.jpg';
@@ -11,6 +12,10 @@ import Snow from './images/Snow.jpg';
 import Clear from './images/Clear.jpg';
 import Thunderstorm from './images/Thunderstorm.jpg';
 import Drizzle from './images/Drizzle.jpg';
+
+//TODO: Loading UI
+//TODO: Error catching
+//TODO: transition background smoother
 
 function App() {
   const [latitude, setLatitude] = useState('');
@@ -59,12 +64,14 @@ function App() {
     }
   }, [latitude, longitude]);
 
-
   return (
-    <div className="App" style={{ backgroundImage: `url(${background})` }}>
-      <SearchWeather callBackFromParent={myCallBack} />
-      <CurrentWeather data={data} />
-    </div>
+    //style={{ backgroundImage: `url(${background})` }}
+    <div className="App" >
+      <Background background={background} >
+        <SearchWeather callBackFromParent={myCallBack} />
+        <CurrentWeather data={data} />
+      </Background>
+    </div >
   );
 }
 
