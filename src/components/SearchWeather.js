@@ -67,7 +67,7 @@ function Search(props) {
                 onChange={(event) => { setCity(event.target.value) }}
                 label="City"
                 value={city}
-                error={searchError}
+                error={searchError ? true : false}
                 helperText={searchError}
                 variant="filled"
                 className={classes.search} />
