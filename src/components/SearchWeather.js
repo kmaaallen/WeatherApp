@@ -6,7 +6,10 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     form: {
-        padding: '50px'
+        padding: '50px',
+        zIndex: '50',
+        position: 'relative',
+        transform: 'translateY(-100vh)'
     },
     search: {
         minWidth: '300px',

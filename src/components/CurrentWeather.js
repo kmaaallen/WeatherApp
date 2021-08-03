@@ -8,9 +8,14 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
+    container: {
+        zIndex: '50',
+        position: 'relative',
+        transform: 'translateY(-100vh)'
+    },
     card: {
         backgroundColor: 'transparent',
-        height: '100vh'
+        maxHeight: '100vh',
     },
     paddingTop30: {
         paddingTop: '30px',
@@ -54,10 +59,12 @@ function CurrentWeather(props) {
         return riseSet;
     }
 
+    console.log(props.data.main)
+
     return (
-        <div>
+        <div className={classes.container}>
             {(typeof props.data.main != 'undefined') ? (
-                <Card className={classes.card}>
+                <Card className={classes.card} variant="outlined">
                     <CardContent>
                         <Typography variant="h2">
                             {`${props.data.name}, ${props.data.sys.country}` || 'Loading local weather...'}
@@ -102,7 +109,7 @@ function CurrentWeather(props) {
                     </CardContent>
                 </Card>
             ) : (
-                <div></div>
+                <div>Loading ...</div>
             )}
         </div>
     );
