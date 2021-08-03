@@ -3,7 +3,6 @@ import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 //Components
 import SearchWeather from './components/SearchWeather';
 import CurrentWeather from './components/CurrentWeather';
-import Background from './components/Background';
 //Backgrounds
 import Atmosphere from './images/Atmosphere.jpg';
 import Clouds from './images/Clouds.jpg';
@@ -21,7 +20,7 @@ function App() {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [data, setData] = useState([]);
-  const [background, setBackground] = useState([]);
+  const [background, setBackground] = useState('');
 
   const firstCall = useRef(true);
 
@@ -64,14 +63,13 @@ function App() {
     }
   }, [latitude, longitude]);
 
+
   return (
-    //style={{ backgroundImage: `url(${background})` }}
-    <div className="App" >
-      <Background background={background} >
-        <SearchWeather callBackFromParent={myCallBack} />
-        <CurrentWeather data={data} />
-      </Background>
-    </div >
+    <div className="App">
+      <div key={background} className="Background" style={{ backgroundImage: `url(${background})` }} />
+      <SearchWeather callBackFromParent={myCallBack} />
+      <CurrentWeather data={data} />
+    </ div >
   );
 }
 
