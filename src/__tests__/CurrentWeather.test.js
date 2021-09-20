@@ -4,7 +4,7 @@ import CurrentWeather from '../components/CurrentWeather';
 import { data } from '../setupTests';
 
 
-describe('<App />', () => {
+describe('<CurrentWeather />', () => {
     it('renders correctly when provided with valid data object', () => {
         const tree = renderer.create(<CurrentWeather data={data} />).toJSON();
         expect(tree).toMatchSnapshot();
