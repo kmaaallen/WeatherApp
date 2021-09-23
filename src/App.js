@@ -11,6 +11,7 @@ import Snow from './images/Snow.jpg';
 import Clear from './images/Clear.jpg';
 import Thunderstorm from './images/Thunderstorm.jpg';
 import Drizzle from './images/Drizzle.jpg';
+import Night from './images/Night.jpg';
 
 //TODO: Loading UI
 //TODO: Error catching
@@ -32,14 +33,18 @@ function App() {
     if (data.length === 0) {
       return;
     } else {
-      const atmosphere = ['Mist', 'Smoke', 'Haze', 'Dust', 'Fog', 'Sand', 'Ash', 'Squall', 'Tornado'];
-      if (atmosphere.includes(data.weather[0].main)) setBackground(Atmosphere);
-      if (data.weather[0].main === 'Clouds') setBackground(Clouds);
-      if (data.weather[0].main === 'Rain') setBackground(Rain);
-      if (data.weather[0].main === 'Snow') setBackground(Snow);
-      if (data.weather[0].main === 'Drizzle') setBackground(Drizzle);
-      if (data.weather[0].main === 'Thunderstorm') setBackground(Thunderstorm);
-      if (data.weather[0].main === 'Clear') setBackground(Clear);
+      if ((data.weather[0].icon).includes("n")) {
+        setBackground(Night);
+      } else {
+        const atmosphere = ['Mist', 'Smoke', 'Haze', 'Dust', 'Fog', 'Sand', 'Ash', 'Squall', 'Tornado'];
+        if (atmosphere.includes(data.weather[0].main)) setBackground(Atmosphere);
+        if (data.weather[0].main === 'Clouds') setBackground(Clouds);
+        if (data.weather[0].main === 'Rain') setBackground(Rain);
+        if (data.weather[0].main === 'Snow') setBackground(Snow);
+        if (data.weather[0].main === 'Drizzle') setBackground(Drizzle);
+        if (data.weather[0].main === 'Thunderstorm') setBackground(Thunderstorm);
+        if (data.weather[0].main === 'Clear') setBackground(Clear);
+      }
     }
   }, [data])
 
