@@ -60,7 +60,7 @@ function CurrentWeather(props) {
         return riseSet;
     }
 
-    console.log(props.data)
+    //console.log(props.data)
 
     return (
         <div className={classes.container}>
