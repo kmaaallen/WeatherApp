@@ -32,11 +32,12 @@ const useStyles = makeStyles({
         height: '100px',
         width: '100px'
     },
+    night: {
+        color: '#fff'
+    }
 });
 
-// TODO: City not found message
-// TODO: Night background
-// TODO: clear city on refresh
+// TODO: Sort out styles
 
 function CurrentWeather(props) {
     const classes = useStyles();
@@ -64,9 +65,9 @@ function CurrentWeather(props) {
     return (
         <div className={classes.container}>
             {(typeof props.data.main != 'undefined') ? (
-                <Card className={classes.card} variant="outlined">
+                <Card className={classes.card} elevation={0}>
                     <CardContent>
-                        <Typography variant="h2">
+                        <Typography variant="h2" className={(props.data.weather[0].icon.includes('n') ? classes.night : '')}>
                             {`${props.data.name}, ${props.data.sys.country}` || 'Loading local weather...'}
                         </Typography>
                         <Grid container>
@@ -77,31 +78,31 @@ function CurrentWeather(props) {
                                     title={`${props.data.weather[0].description} icon`} />
                             </Grid>
                             <Grid item xs>
-                                <Typography variant="h5" className={classes.paddingTop30 + ' ' + classes.floatLeft}>
+                                <Typography variant="h5" className={classes.paddingTop30 + ' ' + classes.floatLeft + ' ' + (props.data.weather[0].icon.includes('n') ? classes.night : '')}>
                                     {Math.round(props.data.main.temp)}°C
                                 </Typography>
                             </Grid>
                         </Grid>
                         <Grid container>
                             <Grid item xs>
-                                <Typography variant="h5" className={classes.floatRight}>
+                                <Typography variant="h5" className={classes.floatRight + ' ' + (props.data.weather[0].icon.includes('n') ? classes.night : '')}>
                                     Max: {Math.round(props.data.main.temp_max)}°C
                                 </Typography>
                             </Grid>
                             <Grid item xs>
-                                <Typography variant="h5" className={classes.floatLeft}>
+                                <Typography variant="h5" className={classes.floatLeft + ' ' + (props.data.weather[0].icon.includes('n') ? classes.night : '')}>
                                     Min: {Math.round(props.data.main.temp_min)}°C
                                 </Typography>
                             </Grid>
                         </Grid>
                         <Grid container>
                             <Grid item xs>
-                                <Typography variant="h5" className={classes.floatRight}>
+                                <Typography variant="h5" className={classes.floatRight + ' ' + (props.data.weather[0].icon.includes('n') ? classes.night : '')}>
                                     Sunrise: {getTime(props.data.sys.sunrise, props.data.timezone)}
                                 </Typography>
                             </Grid>
                             <Grid item xs>
-                                <Typography variant="h5" className={classes.floatLeft}>
+                                <Typography variant="h5" className={classes.floatLeft + ' ' + (props.data.weather[0].icon.includes('n') ? classes.night : '')}>
                                     Sunset: {getTime(props.data.sys.sunset, props.data.timezone)}
                                 </Typography>
                             </Grid>
@@ -110,8 +111,9 @@ function CurrentWeather(props) {
                 </Card>
             ) : (
                 <div>Loading ...</div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 
 }
