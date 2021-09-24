@@ -15,7 +15,7 @@ exports[`<CurrentWeather /> renders correctly when provided with valid data obje
   className="makeStyles-container-1"
 >
   <div
-    className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-outlined MuiPaper-rounded"
+    className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-elevation0 MuiPaper-rounded"
   >
     <div
       className="MuiCardContent-root"
@@ -45,7 +45,7 @@ exports[`<CurrentWeather /> renders correctly when provided with valid data obje
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
         >
           <h5
-            className="MuiTypography-root makeStyles-paddingTop30-3 makeStyles-floatLeft-5 MuiTypography-h5"
+            className="MuiTypography-root makeStyles-paddingTop30-3 makeStyles-floatLeft-5  MuiTypography-h5"
           >
             283
             °C
@@ -59,7 +59,7 @@ exports[`<CurrentWeather /> renders correctly when provided with valid data obje
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
         >
           <h5
-            className="MuiTypography-root makeStyles-floatRight-4 MuiTypography-h5"
+            className="MuiTypography-root makeStyles-floatRight-4  MuiTypography-h5"
           >
             Max: 
             284
@@ -70,7 +70,7 @@ exports[`<CurrentWeather /> renders correctly when provided with valid data obje
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
         >
           <h5
-            className="MuiTypography-root makeStyles-floatLeft-5 MuiTypography-h5"
+            className="MuiTypography-root makeStyles-floatLeft-5  MuiTypography-h5"
           >
             Min: 
             280
@@ -85,7 +85,7 @@ exports[`<CurrentWeather /> renders correctly when provided with valid data obje
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
         >
           <h5
-            className="MuiTypography-root makeStyles-floatRight-4 MuiTypography-h5"
+            className="MuiTypography-root makeStyles-floatRight-4  MuiTypography-h5"
           >
             Sunrise: 
             5:47 am
@@ -95,7 +95,7 @@ exports[`<CurrentWeather /> renders correctly when provided with valid data obje
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
         >
           <h5
-            className="MuiTypography-root makeStyles-floatLeft-5 MuiTypography-h5"
+            className="MuiTypography-root makeStyles-floatLeft-5  MuiTypography-h5"
           >
             Sunset: 
             8:29 pm
