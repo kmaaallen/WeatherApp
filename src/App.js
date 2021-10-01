@@ -13,7 +13,6 @@ import Thunderstorm from './images/Thunderstorm.jpg';
 import Drizzle from './images/Drizzle.jpg';
 import Night from './images/Night.jpg';
 
-//TODO: Loading UI
 //TODO: Error catching
 //TODO: transition background smoother
 
