@@ -6,6 +6,7 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
     container: {
@@ -34,10 +35,14 @@ const useStyles = makeStyles({
     },
     night: {
         color: '#fff'
+    },
+    progressCircle: {
+        margin: '15px'
     }
 });
 
 // TODO: Sort out styles
+// TODO: What if user doesn't give permission for geolocation?
 
 function CurrentWeather(props) {
     const classes = useStyles();
@@ -110,7 +115,10 @@ function CurrentWeather(props) {
                     </CardContent>
                 </Card>
             ) : (
-                <div>Loading ...</div>
+                <div>
+                    <div>Loading</div>
+                    <CircularProgress className={classes.progressCircle} />
+                </div>
             )
             }
         </div >

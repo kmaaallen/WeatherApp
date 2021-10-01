@@ -20,7 +20,7 @@ describe('<App />', () => {
         };
         global.navigator.geolocation = mockGeolocation;
         const { findByText, queryByText } = render(<App />);
-        waitForElementToBeRemoved(queryByText('Loading ...')).then(() =>
+        waitForElementToBeRemoved(queryByText('Loading')).then(() =>
             expect(findByText('Mountain View, US')).toBeTruthy(),
         )
     });
