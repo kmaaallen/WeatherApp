@@ -5,10 +5,11 @@
 
 .Background {
   background-size: cover;
-  animation: 10s fadeIn;
+  animation: 5s fadeIn;
   height: 100vh;
   z-index: 25;
   position: relative;
+  background-color: lightgrey;
 }
 
 @keyframes fadeIn {
