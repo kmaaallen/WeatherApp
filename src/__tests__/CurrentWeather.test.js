@@ -25,7 +25,7 @@ describe('<CurrentWeather />', () => {
         expect(tree).toMatchSnapshot();
 
         const { getByText } = render(<CurrentWeather data={[]} />);
-        const loading = getByText('Loading ...');
+        const loading = getByText('Loading');
         expect(loading).toBeTruthy();
     });
     it('renders white text when weather locale is night time', () => {
