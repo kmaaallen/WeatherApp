@@ -6,17 +6,36 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
-    container: {
-        zIndex: '50',
-        position: 'relative',
-        transform: 'translateY(-100vh)'
-    },
     card: {
-        backgroundColor: 'transparent',
-        maxHeight: '100vh',
+        paddingTop: '10px',
+        backgroundColor: 'black',
+        borderRadius: '0',
+        width: '50%',
+        float: 'right',
+    },
+    mainMedia: {
+        display: 'block',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        borderTopLeftRadius: '8px',
+        borderTopRightRadius: '8px',
+        width: '80%',
+        margin: 'auto',
+        //maxHeight: '250px', //need media query here
+        border: '1px solid white'
+    },
+    content: {
+        color: 'black',
+        width: '80%',
+        margin: '0 auto 30px',
+        padding: '16px 0',
+        backgroundColor: 'white',
+        borderBottomLeftRadius: '8px',
+        borderBottomRightRadius: '8px',
+        border: '1px solid white'
     },
     paddingTop30: {
         paddingTop: '30px',
@@ -33,12 +52,6 @@ const useStyles = makeStyles({
         height: '100px',
         width: '100px'
     },
-    night: {
-        color: '#fff'
-    },
-    progressCircle: {
-        margin: '15px'
-    }
 });
 
 // TODO: Sort out styles
@@ -68,60 +81,57 @@ function CurrentWeather(props) {
     //console.log(props.data)
 
     return (
-        <div className={classes.container}>
-            {(typeof props.data.main != 'undefined') ? (
-                <Card className={classes.card} elevation={0}>
-                    <CardContent>
-                        <Typography variant="h2" className={(props.data.weather[0].icon.includes('n') ? classes.night : '')}>
-                            {`${props.data.name}, ${props.data.sys.country}` || 'Loading local weather...'}
+        <Card className={classes.card} elevation={0}>
+            <CardMedia
+                className={classes.mainMedia}
+                component="img"
+                height="300"
+                image={props.background}
+                alt=""
+            />
+            <CardContent className={classes.content}>
+                <Typography component="h2" variant="h4">
+                    {`${props.data.name}, ${props.data.sys.country}` || 'Loading local weather...'}
+                </Typography>
+                <Grid container>
+                    <Grid item xs>
+                        <CardMedia
+                            className={classes.media + ' ' + classes.floatRight}
+                            image={`${process.env.REACT_APP_API_LOGO}/${props.data.weather[0].icon}@2x.png`}
+                            title={`${props.data.weather[0].description} icon`} />
+                    </Grid>
+                    <Grid item xs>
+                        <Typography component="h3" variant="h5" className={classes.paddingTop30 + ' ' + classes.floatLeft}>
+                            {Math.round(props.data.main.temp)}°C
                         </Typography>
-                        <Grid container>
-                            <Grid item xs>
-                                <CardMedia
-                                    className={classes.media + ' ' + classes.floatRight}
-                                    image={`${process.env.REACT_APP_API_LOGO}/${props.data.weather[0].icon}@2x.png`}
-                                    title={`${props.data.weather[0].description} icon`} />
-                            </Grid>
-                            <Grid item xs>
-                                <Typography variant="h5" className={classes.paddingTop30 + ' ' + classes.floatLeft + ' ' + (props.data.weather[0].icon.includes('n') ? classes.night : '')}>
-                                    {Math.round(props.data.main.temp)}°C
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid container>
-                            <Grid item xs>
-                                <Typography variant="h5" className={classes.floatRight + ' ' + (props.data.weather[0].icon.includes('n') ? classes.night : '')}>
-                                    Max: {Math.round(props.data.main.temp_max)}°C
-                                </Typography>
-                            </Grid>
-                            <Grid item xs>
-                                <Typography variant="h5" className={classes.floatLeft + ' ' + (props.data.weather[0].icon.includes('n') ? classes.night : '')}>
-                                    Min: {Math.round(props.data.main.temp_min)}°C
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid container>
-                            <Grid item xs>
-                                <Typography variant="h5" className={classes.floatRight + ' ' + (props.data.weather[0].icon.includes('n') ? classes.night : '')}>
-                                    Sunrise: {getTime(props.data.sys.sunrise, props.data.timezone)}
-                                </Typography>
-                            </Grid>
-                            <Grid item xs>
-                                <Typography variant="h5" className={classes.floatLeft + ' ' + (props.data.weather[0].icon.includes('n') ? classes.night : '')}>
-                                    Sunset: {getTime(props.data.sys.sunset, props.data.timezone)}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    </CardContent>
-                </Card>
-            ) : (
-                <div>
-                    <div>Loading</div>
-                    <CircularProgress className={classes.progressCircle} />
-                </div>
-            )
-            }
-        </div >
+                    </Grid>
+                </Grid>
+                <Grid container>
+                    <Grid item xs>
+                        <Typography component="h3" variant="h5" className={classes.floatRight}>
+                            Max: {Math.round(props.data.main.temp_max)}°C
+                        </Typography>
+                    </Grid>
+                    <Grid item xs>
+                        <Typography component="h3" variant="h5" className={classes.floatLeft}>
+                            Min: {Math.round(props.data.main.temp_min)}°C
+                        </Typography>
+                    </Grid>
+                </Grid>
+                <Grid container>
+                    <Grid item xs>
+                        <Typography component="h3" variant="h5" className={classes.floatRight}>
+                            Sunrise: {getTime(props.data.sys.sunrise, props.data.timezone)}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs>
+                        <Typography component="h3" variant="h5" className={classes.floatLeft}>
+                            Sunset: {getTime(props.data.sys.sunset, props.data.timezone)}
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </CardContent>
+        </Card>
     );
 
 }

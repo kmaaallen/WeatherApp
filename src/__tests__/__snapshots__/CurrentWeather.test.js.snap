@@ -1,133 +1,97 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CurrentWeather /> renders correctly when provided with empty data object 1`] = `
-<div
-  className="makeStyles-container-1"
->
-  <div>
-    <div>
-      Loading
-    </div>
-    <div
-      className="MuiCircularProgress-root makeStyles-progressCircle-8 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
-      role="progressbar"
-      style={
-        Object {
-          "height": 40,
-          "width": 40,
-        }
-      }
-    >
-      <svg
-        className="MuiCircularProgress-svg"
-        viewBox="22 22 44 44"
-      >
-        <circle
-          className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
-          cx={44}
-          cy={44}
-          fill="none"
-          r={20.2}
-          strokeWidth={3.6}
-          style={Object {}}
-        />
-      </svg>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`<CurrentWeather /> renders correctly when provided with valid data object 1`] = `
 <div
-  className="makeStyles-container-1"
+  className="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation0 MuiPaper-rounded"
 >
+  <img
+    alt=""
+    className="MuiCardMedia-root makeStyles-mainMedia-2 MuiCardMedia-media MuiCardMedia-img"
+    height="300"
+  />
   <div
-    className="MuiPaper-root MuiCard-root makeStyles-card-2 MuiPaper-elevation0 MuiPaper-rounded"
+    className="MuiCardContent-root makeStyles-content-3"
   >
-    <div
-      className="MuiCardContent-root"
+    <h2
+      className="MuiTypography-root MuiTypography-h4"
     >
-      <h2
-        className="MuiTypography-root MuiTypography-h2"
-      >
-        Mountain View, US
-      </h2>
+      Mountain View, US
+    </h2>
+    <div
+      className="MuiGrid-root MuiGrid-container"
+    >
       <div
-        className="MuiGrid-root MuiGrid-container"
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
       >
         <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
-        >
-          <div
-            className="MuiCardMedia-root makeStyles-media-6 makeStyles-floatRight-4"
-            style={
-              Object {
-                "backgroundImage": "url(\\"https://openweathermap.org/img/wn/01d@2x.png\\")",
-              }
+          className="MuiCardMedia-root makeStyles-media-7 makeStyles-floatRight-5"
+          style={
+            Object {
+              "backgroundImage": "url(\\"https://openweathermap.org/img/wn/01d@2x.png\\")",
             }
-            title="clear sky icon"
-          />
-        </div>
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
-        >
-          <h5
-            className="MuiTypography-root makeStyles-paddingTop30-3 makeStyles-floatLeft-5  MuiTypography-h5"
-          >
-            283
-            °C
-          </h5>
-        </div>
+          }
+          title="clear sky icon"
+        />
       </div>
       <div
-        className="MuiGrid-root MuiGrid-container"
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
       >
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
+        <h3
+          className="MuiTypography-root makeStyles-paddingTop30-4 makeStyles-floatLeft-6 MuiTypography-h5"
         >
-          <h5
-            className="MuiTypography-root makeStyles-floatRight-4  MuiTypography-h5"
-          >
-            Max: 
-            284
-            °C
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
+          283
+          °C
+        </h3>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-container"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
+      >
+        <h3
+          className="MuiTypography-root makeStyles-floatRight-5 MuiTypography-h5"
         >
-          <h5
-            className="MuiTypography-root makeStyles-floatLeft-5  MuiTypography-h5"
-          >
-            Min: 
-            280
-            °C
-          </h5>
-        </div>
+          Max: 
+          284
+          °C
+        </h3>
       </div>
       <div
-        className="MuiGrid-root MuiGrid-container"
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
       >
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
+        <h3
+          className="MuiTypography-root makeStyles-floatLeft-6 MuiTypography-h5"
         >
-          <h5
-            className="MuiTypography-root makeStyles-floatRight-4  MuiTypography-h5"
-          >
-            Sunrise: 
-            5:47 am
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
+          Min: 
+          280
+          °C
+        </h3>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-container"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
+      >
+        <h3
+          className="MuiTypography-root makeStyles-floatRight-5 MuiTypography-h5"
         >
-          <h5
-            className="MuiTypography-root makeStyles-floatLeft-5  MuiTypography-h5"
-          >
-            Sunset: 
-            8:29 pm
-          </h5>
-        </div>
+          Sunrise: 
+          5:47 am
+        </h3>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
+      >
+        <h3
+          className="MuiTypography-root makeStyles-floatLeft-6 MuiTypography-h5"
+        >
+          Sunset: 
+          8:29 pm
+        </h3>
       </div>
     </div>
   </div>
