@@ -4,7 +4,7 @@ WeatherApp displays a user's local weather on load and allows users to search fo
 # Description
 This App is built using React and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-It was built to practice developing a full-stack React and Node web app, with separate repositories maintained for each to keep functionality separate.
+It was built to practice developing a full-stack React and Node web app, with repositories maintained for each to keep functionality separate. (Combine?)
 
 It has been deployed on ... TO DO and it available running [here]() //TODO
 
@@ -37,23 +37,26 @@ To search for weather users can type a city name into the search bar to display 
 - A user's longitude and latitude are used on load to make a request to the Node backend in [WeatherAppNode](https://github.com/kmaaallen/WeatherAppNode).
 -
 ### Limitations
-- User has to have location sharing enabled
+- User has to have location sharing enabled - handle this(TODO)
 
 # Future improvements
 - Add 7 day forecasting
 - Return to 'My weather'
 - Display multiple 'favourite locations'?
-- Improve night vs day display
-- Darkmode
+
 
 # Deploy project
 TO DO
 
 #Testing
-TO DO
+Unit tests have been used to test the components in this project. The following testing tools / frameworks have been used:
+[Jest](https://jestjs.io/) as a testing framework
+[Test Renderer](https://reactjs.org/docs/test-renderer.html) to render React components
+[React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing React components
+[Mock Service Worker](https://mswjs.io/) to mock API calls
 
 #Accessibility
-TO DO
+This project has been tested using [WAVE](https://wave.webaim.org/) and [Axe](https://www.deque.com/axe/devtools/)
 
 
 ---------------------------------------
