@@ -1,6 +1,69 @@
+# WeatherApp
+WeatherApp displays a user's local weather on load and allows users to search for and display weather from other places utilising the [OpenWeatherApp API](https://openweathermap.org/api). For this project a separate Node backend project [WeatherAppNode](https://github.com/kmaaallen/WeatherAppNode) is serving as the API.
+
+# Description
+This App is built using React and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+It was built to practice developing a full-stack React and Node web app, with separate repositories maintained for each to keep functionality separate.
+
+It has been deployed on ... TO DO and it available running [here]() //TODO
+
+It consists of a main page and two React components to display weather and to search for weather.
+
+When a weather data object is returned a user is able to see the following details for a location:
+- Location and country code e.g. London, GB
+- Weather icon and current temperature in degrees Celsius
+- Maximum and minimum predicted temperatures in degrees Celsius
+- Sunrise and sunset in the user's local time (12 hour clock)
+- A background image appropriate to the current weather at that location
+
+# How to set up and run project
+- Clone this project
+
+## To run locally
+- Clone and set up [WeatherAppNode](https://github.com/kmaaallen/WeatherAppNode)
+- Once both this project and [WeatherAppNode](https://github.com/kmaaallen/WeatherAppNode) set up. Start the App by running <code>npm start</code> in each project. The app should open in your browser automatically.
+- Enable location sharing in your browser for this app to load your local weather.
+
+
+# How to use project
+To use local weather loading end users will have to enable location sharing in their browser for this app.
+
+To search for weather users can type a city name into the search bar to display weather for that location.
+
+# Features
+## Local weather load based on user's location
+### How it works
+- A user's longitude and latitude are used on load to make a request to the Node backend in [WeatherAppNode](https://github.com/kmaaallen/WeatherAppNode).
+-
+### Limitations
+- User has to have location sharing enabled
+
+# Future improvements
+- Add 7 day forecasting
+- Return to 'My weather'
+- Display multiple 'favourite locations'?
+- Improve night vs day display
+- Darkmode
+
+# Deploy project
+TO DO
+
+#Testing
+TO DO
+
+#Accessibility
+TO DO
+
+
+---------------------------------------
+
+# BOILER PLATE BELOW
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+SCRIPTS BELOW : TO BE INCORPORATED TO ABOVE DOCS
 
 ## Available Scripts
 
