@@ -7,6 +7,10 @@ describe('<App />', () => {
     it('renders correctly', () => {
         const tree = renderer.create(<App />).toJSON();
         expect(tree).toMatchSnapshot();
+
+        const { getByText } = render(<App />);
+        const loading = getByText('Loading');
+        expect(loading).toBeTruthy();
     });
     it('should show local weather on load from users coordinates', () => {
         const mockGeolocation = {

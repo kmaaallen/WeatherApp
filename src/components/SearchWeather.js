@@ -6,10 +6,9 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     form: {
-        padding: '50px',
-        zIndex: '50',
-        position: 'relative',
-        transform: 'translateY(-100vh)'
+        padding: '15px',
+        textAlign: 'right',
+        width: '50%'
     },
     search: {
         minWidth: '300px',
@@ -20,6 +19,9 @@ const useStyles = makeStyles({
         marginLeft: '15px',
         marginTop: '6px',
         height: '40px'
+    },
+    blackText: {
+        color: 'black'
     }
 })
 
@@ -69,6 +71,7 @@ function Search(props) {
                 id="city-text"
                 onChange={(event) => { setCity(event.target.value) }}
                 label="City"
+                InputLabelProps={{ className: classes.blackText }} // find prop for this
                 value={city}
                 error={searchError ? true : false}
                 helperText={searchError}

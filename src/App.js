@@ -12,6 +12,9 @@ import Clear from './images/Clear.jpg';
 import Thunderstorm from './images/Thunderstorm.jpg';
 import Drizzle from './images/Drizzle.jpg';
 import Night from './images/Night.jpg';
+//Material ui
+import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 //TODO: Error catching
 //TODO: transition background smoother
@@ -30,6 +33,7 @@ function App() {
 
   useLayoutEffect(() => {
     if (data.length === 0) {
+      setBackground('');
       return;
     } else {
       if ((data.weather[0].icon).includes("n")) {
@@ -48,6 +52,7 @@ function App() {
   }, [data])
 
   useEffect(() => {
+    document.title = 'Weather App, search and display weather';
     navigator.geolocation.getCurrentPosition(function (pos) {
       setLatitude(pos.coords.latitude);
       setLongitude(pos.coords.longitude);
@@ -69,12 +74,19 @@ function App() {
 
 
   return (
-    <div className="App">
-      <div key={background} className="Background" style={{ backgroundImage: `url(${background})` }} />
-      <SearchWeather callBackFromParent={myCallBack} />
-      <CurrentWeather data={data} />
-    </ div >
+    <div className="App" role="main">
+      <div style={{ display: 'flex', color: 'white' }}>
+        <Typography variant="h5" component="h1" style={{ padding: '25px 15px', textAlign: 'left', width: '50%' }}>Weather App</Typography>
+        <SearchWeather callBackFromParent={myCallBack} />
+      </div>
+      {typeof data.main != 'undefined' ? <CurrentWeather data={data} background={background} /> : (<div>
+        <div style={{ color: 'white' }}>Loading</div>
+        <CircularProgress />
+      </div>)}
+
+    </div>
   );
 }
 
 export default App;
+//<div key={background} className="Background" style={{ backgroundImage: `url(${background})` }} />
