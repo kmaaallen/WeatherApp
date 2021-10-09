@@ -38,6 +38,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "https://react-weather-app-node.herokuapp.com/",
   "devDependencies": {
     "@testing-library/react": "^12.1.0",
     "jest": "^26.6.0",
