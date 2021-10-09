@@ -34,7 +34,7 @@ function Search(props) {
     function handleSubmit(e) {
         setSearchError('');
         e.preventDefault();
-        fetch(`/api/weather/${city}`)
+        fetch(`https://react-weather-app-node.herokuapp.com/api/weather/${city}`)
             .then((res) => res.json())
             .then((cityData) => {
                 if (cityData.data.cod === "404") {
