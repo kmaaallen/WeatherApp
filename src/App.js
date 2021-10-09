@@ -64,7 +64,7 @@ function App() {
       firstCall.current = false;
       return;
     } else if (latitude !== '' && longitude !== '') {
-      fetch(`https://react-weather-app-node.herokuapp.com/api/weather/${latitude}/${longitude}`)
+      fetch(`/api/weather/${latitude}/${longitude}`)
         .then((res) => res.json())
         .then((data) => {
           setData(data.data);
