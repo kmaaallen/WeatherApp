@@ -12,8 +12,6 @@ const useStyles = makeStyles({
         paddingTop: '10px',
         backgroundColor: 'black',
         borderRadius: '0',
-        width: '50%',
-        float: 'right',
     },
     mainMedia: {
         display: 'block',
@@ -24,7 +22,6 @@ const useStyles = makeStyles({
         borderTopRightRadius: '8px',
         width: '80%',
         margin: 'auto',
-        //maxHeight: '250px', //need media query here
         border: '1px solid white'
     },
     content: {
