@@ -37,11 +37,11 @@ function Search(props) {
         fetch(`/api/weather/${city}`)
             .then((res) => res.json())
             .then((cityData) => {
-                if (cityData.data.cod === "404") {
-                    var capitalised = cityData.data.message.charAt(0).toUpperCase() + cityData.data.message.slice(1);
+                if (cityData.weatherNow.cod === "404") {
+                    var capitalised = cityData.weatherNow.message.charAt(0).toUpperCase() + cityData.weatherNow.message.slice(1);
                     setSearchError(capitalised);
                 } else {
-                    setCityData(cityData.data);
+                    setCityData(cityData);
                     setCity('');
                 }
             })

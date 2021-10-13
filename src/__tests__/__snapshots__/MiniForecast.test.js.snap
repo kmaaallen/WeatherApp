@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MiniForecast /> renders correctly when provided with valid data object 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation1 MuiPaper-rounded"
+>
+  <div
+    className="MuiCardContent-root makeStyles-content-2"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item"
+      >
+        <div
+          className="MuiCardMedia-root makeStyles-media-3"
+          style={
+            Object {
+              "backgroundImage": "url(\\"https://openweathermap.org/img/wn/10d@2x.png\\")",
+            }
+          }
+          title="light rain icon"
+        />
+      </div>
+      <div
+        className="MuiGrid-root makeStyles-item-4 MuiGrid-item"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          Tue
+        </p>
+      </div>
+      <div
+        className="MuiGrid-root makeStyles-item-4 MuiGrid-item"
+      >
+         
+        <p
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          Min: 
+          9
+          °C
+        </p>
+      </div>
+      <div
+        className="MuiGrid-root makeStyles-item-4 MuiGrid-item"
+      >
+         
+        <p
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          Max: 
+          15
+          °C
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

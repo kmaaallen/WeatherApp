@@ -3,6 +3,7 @@ import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 //Components
 import SearchWeather from './components/SearchWeather';
 import CurrentWeather from './components/CurrentWeather';
+import Forecast from './components/Forecast';
 //Backgrounds
 import Atmosphere from './images/Atmosphere.jpg';
 import Clouds from './images/Clouds.jpg';
@@ -15,9 +16,9 @@ import Night from './images/Night.jpg';
 //Material ui
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Grid from '@material-ui/core/Grid';
 
 //TODO: Error catching
-//TODO: transition background smoother
 
 function App() {
   const [latitude, setLatitude] = useState('');
@@ -36,17 +37,17 @@ function App() {
       setBackground('');
       return;
     } else {
-      if ((data.weather[0].icon).includes("n")) {
+      if ((data.weatherNow.weather[0].icon).includes("n")) {
         setBackground(Night);
       } else {
         const atmosphere = ['Mist', 'Smoke', 'Haze', 'Dust', 'Fog', 'Sand', 'Ash', 'Squall', 'Tornado'];
-        if (atmosphere.includes(data.weather[0].main)) setBackground(Atmosphere);
-        if (data.weather[0].main === 'Clouds') setBackground(Clouds);
-        if (data.weather[0].main === 'Rain') setBackground(Rain);
-        if (data.weather[0].main === 'Snow') setBackground(Snow);
-        if (data.weather[0].main === 'Drizzle') setBackground(Drizzle);
-        if (data.weather[0].main === 'Thunderstorm') setBackground(Thunderstorm);
-        if (data.weather[0].main === 'Clear') setBackground(Clear);
+        if (atmosphere.includes(data.weatherNow.weather[0].main)) setBackground(Atmosphere);
+        if (data.weatherNow.weather[0].main === 'Clouds') setBackground(Clouds);
+        if (data.weatherNow.weather[0].main === 'Rain') setBackground(Rain);
+        if (data.weatherNow.weather[0].main === 'Snow') setBackground(Snow);
+        if (data.weatherNow.weather[0].main === 'Drizzle') setBackground(Drizzle);
+        if (data.weatherNow.weather[0].main === 'Thunderstorm') setBackground(Thunderstorm);
+        if (data.weatherNow.weather[0].main === 'Clear') setBackground(Clear);
       }
     }
   }, [data])
@@ -67,7 +68,7 @@ function App() {
       fetch(`/api/weather/${latitude}/${longitude}`)
         .then((res) => res.json())
         .then((data) => {
-          setData(data.data);
+          setData(data);
         });
     }
   }, [latitude, longitude]);
@@ -79,14 +80,22 @@ function App() {
         <Typography variant="h5" component="h1" style={{ padding: '25px 15px', textAlign: 'left', width: '50%' }}>Weather App</Typography>
         <SearchWeather callBackFromParent={myCallBack} />
       </div>
-      {typeof data.main != 'undefined' ? <CurrentWeather data={data} background={background} /> : (<div>
-        <div style={{ color: 'white' }}>Loading</div>
-        <CircularProgress />
-      </div>)}
+      {typeof data.weatherNow != 'undefined' ?
+        <Grid container>
+          <Grid item xs={6}>
+            <CurrentWeather data={data.weatherNow} background={background} />
+          </Grid>
+          <Grid item xs={6}>
+            <Forecast data={data.forecast} />
+          </Grid>
+        </Grid>
+        : (<div>
+          <div style={{ color: 'white' }}>Loading</div>
+          <CircularProgress />
+        </div>)}
 
     </div>
   );
 }
 
 export default App;
-//<div key={background} className="Background" style={{ backgroundImage: `url(${background})` }} />
