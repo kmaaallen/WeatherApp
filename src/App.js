@@ -25,6 +25,7 @@ function App() {
   const [longitude, setLongitude] = useState('');
   const [data, setData] = useState([]);
   const [background, setBackground] = useState('');
+  const [location, setLocation] = useState(false);
 
   const firstCall = useRef(true);
 
@@ -54,10 +55,15 @@ function App() {
 
   useEffect(() => {
     document.title = 'Weather App, search and display weather';
-    navigator.geolocation.getCurrentPosition(function (pos) {
-      setLatitude(pos.coords.latitude);
-      setLongitude(pos.coords.longitude);
-    });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        setLatitude(pos.coords.latitude);
+        setLongitude(pos.coords.longitude);
+        setLocation(true);
+      });
+    } else {
+      setLocation(false);
+    }
   }, []);
 
   useLayoutEffect(() => {
@@ -90,8 +96,8 @@ function App() {
           </Grid>
         </Grid>
         : (<div>
-          <div style={{ color: 'white' }}>Loading</div>
-          <CircularProgress />
+          <div style={{ color: 'white', marginTop: '15px' }}>{location ? 'Loading' : 'Please share your location to see local weather, or use the search bar'}</div>
+          {location ? <CircularProgress /> : null}
         </div>)}
 
     </div>
