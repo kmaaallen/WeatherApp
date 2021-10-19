@@ -9,8 +9,8 @@ describe('<App />', () => {
         expect(tree).toMatchSnapshot();
 
         const { getByText } = render(<App />);
-        const loading = getByText('Loading');
-        expect(loading).toBeTruthy();
+        const message = getByText('Please share your location to see local weather, or use the search bar');
+        expect(message).toBeTruthy();
     });
     it('should show local weather on load from users coordinates', () => {
         const mockGeolocation = {
