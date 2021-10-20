@@ -34,7 +34,7 @@ function Search(props) {
     function handleSubmit(e) {
         setSearchError('');
         e.preventDefault();
-        fetch(`/api/weather/${city}`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/weather/${city}`)
             .then((res) => res.json())
             .then((cityData) => {
                 if (cityData.weatherNow.cod === "404") {

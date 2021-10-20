@@ -51,9 +51,6 @@ const useStyles = makeStyles({
     },
 });
 
-// TODO: Sort out styles
-// TODO: What if user doesn't give permission for geolocation?
-
 function CurrentWeather(props) {
     const classes = useStyles();
 
