@@ -50,7 +50,6 @@ function MiniForecast(props) {
                     <Grid item className={classes.item}> <Typography>Min: {Math.round(props.day.temp.min)}°C</Typography></Grid>
                     <Grid item className={classes.item}> <Typography>Max: {Math.round(props.day.temp.max)}°C</Typography></Grid>
                 </Grid>
-
             </CardContent>
         </Card>
     )
