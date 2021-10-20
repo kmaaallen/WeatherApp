@@ -71,7 +71,7 @@ function App() {
       firstCall.current = false;
       return;
     } else if (latitude !== '' && longitude !== '') {
-      fetch(`/api/weather/${latitude}/${longitude}`)
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/weather/${latitude}/${longitude}`)
         .then((res) => res.json())
         .then((data) => {
           setData(data);
