@@ -6,7 +6,7 @@ This App is built using React and was bootstrapped with [Create React App](https
 
 It was built to practice developing a full-stack React and Node web app, with repositories maintained for each to keep functionality separate. (Combine?)
 
-It has been deployed on ... TO DO and it available running [here]() //TODO
+It has been deployed on ... TO DO and it available running [here](https://react-weather-app-front-end.herokuapp.com/)
 
 It consists of a main page and two React components to display weather and to search for weather.
 
