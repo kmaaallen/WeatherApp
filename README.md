@@ -4,26 +4,43 @@ WeatherApp displays a user's local weather on load and allows users to search fo
 # Description
 This App is built using React and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-It was built to practice developing a full-stack React and Node web app, with repositories maintained for each to keep functionality separate. (Combine?)
+It was built to practice developing a full-stack React and Node web app, with repositories maintained for each to keep functionality separate.
 
-It has been deployed on ... TO DO and it available running [here](https://react-weather-app-front-end.herokuapp.com/)
+It has been deployed on Heroky and it available running [here](https://react-weather-app-front-end.herokuapp.com/)
 
-It consists of a main page and two React components to display weather and to search for weather.
+It consists of a main page and React components to display weather and to search for weather.
 
-When a weather data object is returned a user is able to see the following details for a location:
+When a weather data object is returned a user is able to see the following details:
+
+For a location's current weather:
 - Location and country code e.g. London, GB
 - Weather icon and current temperature in degrees Celsius
 - Maximum and minimum predicted temperatures in degrees Celsius
 - Sunrise and sunset in the user's local time (12 hour clock)
 - A background image appropriate to the current weather at that location
 
+For a location's 7 day forecast:
+- Day of the week
+- Weather icon
+- Maximum and minimum predicted temperatures in degrees Celsius
+
 # How to set up and run project
-- Clone this project
+- Clone this repository
 
 ## To run locally
 - Clone and set up [WeatherAppNode](https://github.com/kmaaallen/WeatherAppNode)
-- Once both this project and [WeatherAppNode](https://github.com/kmaaallen/WeatherAppNode) set up. Start the App by running <code>npm start</code> in each project. The app should open in your browser automatically.
-- Enable location sharing in your browser for this app to load your local weather.
+- Run `npm install` to install the required packages
+- Create a .env file at the project root and add the following:
+
+REACT_APP_API_URL = 'https://api.openweathermap.org/data/2.5'
+REACT_APP_API_KEY = Your api key for openWeatherMap
+REACT_APP_API_LOGO = 'https://openweathermap.org/img/wn'
+REACT_APP_BACKEND_URL = 'api'
+
+Remember to add your .env file to gitignore
+
+- Once both this project and [WeatherAppNode](https://github.com/kmaaallen/WeatherAppNode) are set up, start the App by running `npm start` in each project. The app should open in your browser automatically.
+- Enable location sharing in your browser for this app to load your local weather or use the search component to display a particular location.
 
 
 # How to use project
@@ -35,18 +52,33 @@ To search for weather users can type a city name into the search bar to display 
 ## Local weather load based on user's location
 ### How it works
 - A user's longitude and latitude are used on load to make a request to the Node backend in [WeatherAppNode](https://github.com/kmaaallen/WeatherAppNode).
--
+- User has to enable location sharing to use this feature or they will see the following message, 'Please share your location to see local weather, or use the search bar'.
+
 ### Limitations
-- User has to have location sharing enabled - handle this(TODO)
+- The app does not currently utilise a storage solution so users cannot yet save favourite locations
 
 # Future improvements
-- Add 7 day forecasting
-- Return to 'My weather'
-- Display multiple 'favourite locations'?
-
+- Allow users to save favourite locations or go back to local weather without refreshing page
+- Allow for a range of forecasts with varying detail
+- Set up theme with material UI to consolidate styling
+- Further optimisation of webpage for sustainability
 
 # Deploy project
-TO DO
+This project is currently deployed on Heroku as a stand alone app and calls a separate Heroku app hosting the WeatherAppNode API backend.
+To deploy your app on Heroku refer to this [documentation](https://devcenter.heroku.com/categories/deploying-with-git) for deploying an app using git and this [documentation](https://facebook.github.io/create-react-app/docs/deployment) on deploying a create-react-app app
+
+Once deployed you will need to add the following config variables to your app in the settings:
+
+REACT_APP_API_KEY = Your openWeatherMap API key
+REACT_APP_API_LOGO = 'https://openweathermap.org/img/wn'
+REACT_APP_API_URL = 'https://api.openweathermap.org/data/2.5'
+REACT_APP_BACKEND_URL = The url of your backend hosted server
+
+#Technologies / Frameworks
+[Create React App](https://facebook.github.io/create-react-app/docs/getting-started).
+[React](https://reactjs.org/).
+[OpenWeatherMap](https://openweathermap.org)
+[Material UI](https://mui.com/)
 
 #Testing
 Unit tests have been used to test the components in this project. The following testing tools / frameworks have been used:
@@ -55,82 +87,14 @@ Unit tests have been used to test the components in this project. The following 
 [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing React components
 [Mock Service Worker](https://mswjs.io/) to mock API calls
 
+To run all tests: `npm run test`
+
 #Accessibility
 This project has been tested using [WAVE](https://wave.webaim.org/) and [Axe](https://www.deque.com/axe/devtools/)
 
+#Sustainability
+The hosted webpage for this project has been optimised to improve its sustainability - check out how it is doing [on websitecarbon.com](https://www.websitecarbon.com/website/react-weather-app-front-end-herokuapp-com/)
 
----------------------------------------
-
-# BOILER PLATE BELOW
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-SCRIPTS BELOW : TO BE INCORPORATED TO ABOVE DOCS
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#Other
+Helpful tutorial used to guide initial stages of this project - [How to create a react app with a node backend](https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-the-complete-guide/)
+Weather images were sourced from [UnSplash](https://unsplash.com/)
