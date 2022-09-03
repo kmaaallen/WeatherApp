@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
     grid: {
-        paddingTop: '15px',
+        padding: '15px 0px',
         height: 'calc(100% - 30px)',
         display: 'flex'
     },

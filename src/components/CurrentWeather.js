@@ -22,7 +22,10 @@ const useStyles = makeStyles({
         borderTopRightRadius: '8px',
         width: '80%',
         margin: 'auto',
-        border: '1px solid white'
+        border: '1px solid white',
+        '@media (max-width: 600px)': {
+            display: 'none',
+        }
     },
     content: {
         color: 'black',
@@ -32,14 +35,18 @@ const useStyles = makeStyles({
         backgroundColor: 'white',
         borderBottomLeftRadius: '8px',
         borderBottomRightRadius: '8px',
-        border: '1px solid white'
+        border: '1px solid white',
+        '@media (max-width: 600px)': {
+            borderTopLeftRadius: '8px',
+            borderTopRightRadius: '8px',
+        }
     },
     paddingTop30: {
         paddingTop: '30px',
     },
     floatRight: {
         float: 'right',
-        marginRight: '15px'
+        marginRight: '15px',
     },
     floatLeft: {
         float: 'left',
@@ -47,8 +54,12 @@ const useStyles = makeStyles({
     },
     media: {
         height: '100px',
-        width: '100px'
+        width: '100px',
     },
+    tempSunData: {
+        margin: '2px auto',
+        maxWidth: '100px',
+    }
 });
 
 function CurrentWeather(props) {
@@ -71,8 +82,6 @@ function CurrentWeather(props) {
         }
         return riseSet;
     }
-
-    //console.log(props.data)
 
     return (
         <Card className={classes.card} elevation={0}>
@@ -102,24 +111,24 @@ function CurrentWeather(props) {
                 </Grid>
                 <Grid container>
                     <Grid item xs>
-                        <Typography component="h3" variant="h5" className={classes.floatRight}>
+                        <Typography component="h3" variant="h5" className={classes.tempSunData}>
                             Max: {Math.round(props.data.main.temp_max)}°C
                         </Typography>
                     </Grid>
                     <Grid item xs>
-                        <Typography component="h3" variant="h5" className={classes.floatLeft}>
+                        <Typography component="h3" variant="h5" className={classes.tempSunData}>
                             Min: {Math.round(props.data.main.temp_min)}°C
                         </Typography>
                     </Grid>
                 </Grid>
                 <Grid container>
                     <Grid item xs>
-                        <Typography component="h3" variant="h5" className={classes.floatRight}>
+                        <Typography component="h3" variant="h5" className={classes.tempSunData}>
                             Sunrise: {getTime(props.data.sys.sunrise, props.data.timezone)}
                         </Typography>
                     </Grid>
                     <Grid item xs>
-                        <Typography component="h3" variant="h5" className={classes.floatLeft}>
+                        <Typography component="h3" variant="h5" className={classes.tempSunData}>
                             Sunset: {getTime(props.data.sys.sunset, props.data.timezone)}
                         </Typography>
                     </Grid>

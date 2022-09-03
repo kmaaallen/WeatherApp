@@ -51,7 +51,7 @@ exports[`<CurrentWeather /> renders correctly when provided with valid data obje
         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
       >
         <h3
-          className="MuiTypography-root makeStyles-floatRight-5 MuiTypography-h5"
+          className="MuiTypography-root makeStyles-tempSunData-8 MuiTypography-h5"
         >
           Max: 
           284
@@ -62,7 +62,7 @@ exports[`<CurrentWeather /> renders correctly when provided with valid data obje
         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
       >
         <h3
-          className="MuiTypography-root makeStyles-floatLeft-6 MuiTypography-h5"
+          className="MuiTypography-root makeStyles-tempSunData-8 MuiTypography-h5"
         >
           Min: 
           280
@@ -77,7 +77,7 @@ exports[`<CurrentWeather /> renders correctly when provided with valid data obje
         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
       >
         <h3
-          className="MuiTypography-root makeStyles-floatRight-5 MuiTypography-h5"
+          className="MuiTypography-root makeStyles-tempSunData-8 MuiTypography-h5"
         >
           Sunrise: 
           5:47 am
@@ -87,7 +87,7 @@ exports[`<CurrentWeather /> renders correctly when provided with valid data obje
         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
       >
         <h3
-          className="MuiTypography-root makeStyles-floatLeft-6 MuiTypography-h5"
+          className="MuiTypography-root makeStyles-tempSunData-8 MuiTypography-h5"
         >
           Sunset: 
           8:29 pm
