@@ -7,8 +7,9 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles({
     form: {
         padding: '15px',
-        textAlign: 'right',
-        width: '50%'
+        '@media (min-width: 600px)': {
+            textAlign: 'right'
+        }
     },
     search: {
         minWidth: '300px',

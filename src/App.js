@@ -82,16 +82,22 @@ function App() {
 
   return (
     <div className="App" role="main">
-      <div style={{ display: 'flex', color: 'white' }}>
-        <Typography variant="h5" component="h1" style={{ padding: '25px 15px', textAlign: 'left', width: '50%' }}>Weather App</Typography>
-        <SearchWeather callBackFromParent={myCallBack} />
+      <div style={{ color: 'white' }}>
+        <Grid container>
+          <Grid item xs={12} sm={3}>
+            <Typography variant="h5" component="h1" style={{ padding: '25px 15px' }}>Weather App</Typography>
+          </Grid>
+          <Grid item xs={12} sm={9}>
+            <SearchWeather callBackFromParent={myCallBack} />
+          </Grid>
+        </Grid>
       </div>
       {typeof data.weatherNow != 'undefined' ?
         <Grid container>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <CurrentWeather data={data.weatherNow} background={background} />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Forecast data={data.forecast} />
           </Grid>
         </Grid>
